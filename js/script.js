@@ -50,6 +50,8 @@ class Card {
         div.className = "info-aluno";
         nome.innerText = "Nome do aluno: " + this.aluno.pegarNome();
         etiqueta.id = "etiqueta";
+        etiqueta.className = (this.aluno.pegarSituacao() == "Aprovado" ? "verde" : 
+                            this.aluno.pegarSituacao() == "Recuperação" ? "amarelo" : "vermelho");
         notas.innerText = "Notas: " + this.aluno.pegarNotas();
         media.innerText = "Média: " + this.aluno.pegarMedia();
         situacao.innerText = "Situação: " + this.aluno.pegarSituacao();
@@ -75,9 +77,7 @@ function verificar(){
 
     if(nome == ""){
         alert("O nome não pode ser vazio!");
-    }
-
-    if(nota1 == "" || nota1 == NaN){
+    }else if(nota1 == "" || nota1 == NaN){
         alert("A nota do primeiro bimestre é inválida!");
     }else if(nota2 == "" || nota2 == NaN){
         alert("A nota do segundo bimestre é inválida!");
@@ -98,26 +98,60 @@ function verificar(){
 
 function cadastrar(nome, notas){
     alunos.push(new Aluno(nome, notas));
+    alert("Aluno cadastrado!");
+
+    document.getElementById("nome").value = "";
+    document.getElementById("nota1").value = "";
+    document.getElementById("nota2").value = "";
+    document.getElementById("nota3").value = "";
+    document.getElementById("nota4").value = "";
+}
+
+function mediasAbaixo(){
+    let soma = 0;
+
+    alunos.forEach(aluno => {
+        soma += aluno.pegarMedia();
+    });
+
+    let mediaTurma = soma / alunos.length;
+
+    document.getElementById("media-turma").innerText += ": " + mediaTurma.toFixed(2);
+    alunos.forEach(aluno => {
+        if(aluno.pegarMedia() < mediaTurma){
+            let ulAlunos = document.getElementById("alunos-abaixo-media");
+            let liAluno = document.createElement("li");
+
+            liAluno.innerText = `${aluno.pegarNome()}: ${aluno.pegarMedia()}`
+            
+            ulAlunos.appendChild(liAluno);
+        }
+    });
 }
 
 function mudarAba(aba){
     let abaCadastrar = document.getElementById("abaCadastrar");
     let abaVerNotas = document.getElementById("abaVerNotas");
     let cardsAlunos = document.getElementById("cards-alunos");
+    let mediaTurma = document.getElementById("media-turma");
 
     if(aba == "cadastrar"){
         abaCadastrar.style.display = "block";
         abaVerNotas.style.display = "none";
         cardsAlunos.innerText = "";
+        mediaTurma.innerText = "";
     } else {
         abaCadastrar.style.display = "none";
         abaVerNotas.style.display = "block";
         cardsAlunos.innerText = "";
+        mediaTurma.innerText = "";
 
         alunos.forEach(aluno => {
             let card = new Card(aluno);
 
             card.mostrarCard();
-        })
+        });
+
+        mediasAbaixo();
     }
 }
