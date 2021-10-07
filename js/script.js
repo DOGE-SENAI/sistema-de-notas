@@ -48,16 +48,16 @@ class Card {
         let situacao = document.createElement("h5");
 
         div.className = "info-aluno";
-        nome.innerText = "Nome do aluno: " + this.aluno.pegarNome();
         etiqueta.id = "etiqueta";
         etiqueta.className = (this.aluno.pegarSituacao() == "Aprovado" ? "verde" : 
                             this.aluno.pegarSituacao() == "Recuperação" ? "amarelo" : "vermelho");
+        nome.innerHTML = "Nome do aluno: " + this.aluno.pegarNome();
+        nome.appendChild(etiqueta);
         notas.innerText = "Notas: " + this.aluno.pegarNotas();
         media.innerText = "Média: " + this.aluno.pegarMedia();
         situacao.innerText = "Situação: " + this.aluno.pegarSituacao();
 
         div.appendChild(nome);
-        div.appendChild(etiqueta);
         div.appendChild(notas);
         div.appendChild(media);
         div.appendChild(situacao);
