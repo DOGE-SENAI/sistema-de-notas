@@ -135,12 +135,27 @@ function mudarAba(aba){
     let cardsAlunos = document.getElementById("cards-alunos");
     let mediaTurma = document.getElementById("media-turma");
 
+    let buttonCadastrar = document.getElementById("button-cadastrar");
+    let buttonExibir = document.getElementById("button-exibir");
+
     if(aba == "cadastrar"){
-        abaCadastrar.style.display = "block";
+        buttonExibir.style.background = "#7d8187";
+        buttonExibir.style.borderColor = "#7D8187";
+
+        buttonCadastrar.style.background = "#2DC7ED";
+        buttonCadastrar.style.borderColor = "#2DC7ED";
+
+        abaCadastrar.style.display = "flex";
         abaVerNotas.style.display = "none";
         cardsAlunos.innerText = "";
         mediaTurma.innerText = "";
     } else {
+        buttonCadastrar.style.background = "#7d8187";
+        buttonCadastrar.style.borderColor = "#7d8187";
+
+        buttonExibir.style.background = "#2DC7ED";
+        buttonExibir.style.borderColor = "#2DC7ED";
+
         abaCadastrar.style.display = "none";
         abaVerNotas.style.display = "block";
         cardsAlunos.innerText = "";

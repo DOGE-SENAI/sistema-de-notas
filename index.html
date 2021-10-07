@@ -1,85 +1,118 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Notas</title>
+
+    <!--Bootstrap v5.1-->
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+
+    <!--Goolgle Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,500;1,300&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Sistemas de Notas - Escola XYZ</a>
+            <a class="navbar-brand" href="#">Sistemas de Notas - Escola XYZ</a>
         </div>
     </nav>
 
-    <div>
-        <button onclick="mudarAba('cadastrar')">Cadastrar Notas</button>
-        <button onclick="mudarAba('verNotas')">Ver Notas</button>
-    </div>
+    <article class="container-main">
+        <div class="container-nav-button">
+            <button 
+                type="button"
+                onclick="mudarAba('cadastrar')"
+                class="button-nav"
+                id="button-cadastrar"
+            >
+            Cadastrar Notas
+            </button>
 
-    <form id="abaCadastrar">
-        <div>
-            <label for="nome">Nome do Aluno:</label><br/>
-            <input type="text" id="nome" />
-        </div>
-
-        <div>
-            <label for="nota1">Nota do 1º Bimestre:</label><br/>
-            <input type="number" id="nota1" />
-        </div>
-        <div>
-            <label for="nota2">Nota do 2º Bimestre:</label><br/>
-            <input type="number" id="nota2" />
-        </div>
-        <div>
-            <label for="nota3">Nota do 3º Bimestre:</label><br/>
-            <input type="number" id="nota3" />
-        </div>
-        <div>
-            <label for="nota4">Nota do 4º Bimestre:</label><br/>
-            <input type="number" id="nota4" />
+            <button
+                type="button"
+                onclick="mudarAba('verNotas')"
+                class="button-nav"
+                id="button-exibir"
+            >
+            Ver Notas
+            </button>
         </div>
 
-        <div>
-            <button type="button" onclick="verificar()">Enviar Notas</button>
-            <button type="reset">Limpar</button>
-        </div>
-    </form>
+        <form id="abaCadastrar" class="container-form">
+            <div class="container-field">
+                <label for="nome">Nome do Aluno:</label>
+                <input type="text" id="nome" />
+            </div>
 
-    <section id="abaVerNotas">
-        <div id="cards-alunos"></div>
+            <div class="container-field"> 
+                <label for="nota1">Nota do 1º Bimestre:</label>
+                <input type="number" id="nota1" />
+            </div>
 
-        <div class="card-infos" style="width: 20rem;">
-            <div class="card">
-                <div class="card-header">
-                    Média da Turma<span id="media-turma"></span>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Médias abaixo da média geral</h5>
-                    <ul id="alunos-abaixo-media"></ul>
+            <div class="container-field">
+                <label for="nota2">Nota do 2º Bimestre:</label>
+                <input type="number" id="nota2" />
+            </div>
+
+            <div class="container-field">
+                <label for="nota3">Nota do 3º Bimestre:</label>
+                <input type="number" id="nota3" />
+            </div>
+
+            <div class="container-field">
+                <label for="nota4">Nota do 4º Bimestre:</label>
+                <input type="number" id="nota4" />
+            </div>
+
+            <div class="container-buttons">
+                <button type="button" onclick="verificar()" class="buttons button-submit">Cadastrar</button>
+                <button type="reset" class="buttons button-cancel">Cancelar</button>
+            </div>
+        </form>
+
+        <section id="abaVerNotas">
+            <div id="cards-alunos"></div>
+
+            <div class="card-infos" style="width: 20rem;">
+                <div class="card">
+                    <div class="card-header">
+                        Média da Turma<span id="media-turma"></span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Médias abaixo da média geral</h5>
+                        <ul id="alunos-abaixo-media"></ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </article>
 
 
-    <div class="container">
-        <footer class="py-3 my-4">
-          <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
-          </ul>
-          <p class="text-center text-muted">© 2021 Company, Inc</p>
+    <div class="container" style="width: 100%;">
+        <footer class="py-3 my-4" style="width: 100%;">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3" style="width: 100%;">
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+            </ul>
+            <p class="text-center text-muted">© 2021 Company, Inc</p>
         </footer>
     </div>
 
     <script src="js/script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous">
+    </script>
 </body>
+
 </html>
