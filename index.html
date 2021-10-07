@@ -16,11 +16,11 @@
     </nav>
 
     <div>
-        <button onclick="mudarAba(cadastrar)">Cadastrar Notas</button>
-        <button onclick="mudarAba(verNotas)">Ver Notas</button>
+        <button onclick="mudarAba('cadastrar')">Cadastrar Notas</button>
+        <button onclick="mudarAba('verNotas')">Ver Notas</button>
     </div>
 
-    <form>
+    <form id="abaCadastrar">
         <div>
             <label for="nome">Nome do Aluno:</label><br/>
             <input type="text" id="nome" />
@@ -44,13 +44,13 @@
         </div>
 
         <div>
-            <button type="button" onclick="cadastrar()">Enviar Notas</button>
+            <button type="button" onclick="verificar()">Enviar Notas</button>
             <button type="reset">Limpar</button>
         </div>
     </form>
 
-    <section>
-        <div class="cards-alunos"></div>
+    <section id="abaVerNotas">
+        <div id="cards-alunos"></div>
 
         <div class="card-infos" style="width: 20rem;">
             <div class="card">
