@@ -133,6 +133,8 @@ function mudarAba(aba){
     let abaCadastrar = document.getElementById("abaCadastrar");
     let abaVerNotas = document.getElementById("abaVerNotas");
     let cardsAlunos = document.getElementById("cards-alunos");
+
+    let cardInfo = document.getElementById("card-info-media");
     let mediaTurma = document.getElementById("media-turma");
 
     let buttonCadastrar = document.getElementById("button-cadastrar");
@@ -157,7 +159,10 @@ function mudarAba(aba){
         buttonExibir.style.borderColor = "#2DC7ED";
 
         abaCadastrar.style.display = "none";
-        abaVerNotas.style.display = "block";
+        abaVerNotas.style.display = "flex";
+
+        cardInfo.style.display = "flex";
+
         cardsAlunos.innerText = "";
         mediaTurma.innerText = "";
 
