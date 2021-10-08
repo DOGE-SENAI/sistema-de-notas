@@ -135,10 +135,10 @@ input{
     flex-wrap: wrap; 
 }
 
-.container-alunos{
-    border: 1px solid #000;
-    border-radius: 43px;
-    height: 200px;
+.info-aluno{
+    border: 1px solid rgba(0,0,0,0.6);
+    border-radius: 20px;
+    height: 180px;
     width: 410px;
 
     padding: 12px;
@@ -151,18 +151,35 @@ input{
     flex-wrap: wrap;
 }
 
+@media only screen and (max-width: 414px) {
+    .main-exibir-notas {
+        margin: 10px;
+    }
+    
+    .info-aluno {
+        width: 300px;
+        margin: 18px 0px;
+        position: relative;
+        right: 5px;
+    }
+}
+
+.info-aluno h4{
+    font-size: 20px;
+}
+
 #etiqueta{
-    height: 3px;
+    height: 20px;
     padding: 0 50px;
-    margin-left: 30px;
-    border: 1px solid #000;
+    margin-left: 100px;
+    float: right;
+    border: 1px solid rgba(0,0,0,0.3);
     border-radius: 23px;
 }
 
 .verde{background-color: green;}
 .amarelo{background-color: yellow;}
 .vermelho{background-color: red;}
-
 
 .card-infos{
     display: none;

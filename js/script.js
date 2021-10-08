@@ -136,6 +136,7 @@ function mudarAba(aba){
 
     let cardInfo = document.getElementById("card-info-media");
     let mediaTurma = document.getElementById("media-turma");
+    let ulAlunos = document.getElementById("alunos-abaixo-media");
 
     let buttonCadastrar = document.getElementById("button-cadastrar");
     let buttonExibir = document.getElementById("button-exibir");
@@ -151,6 +152,7 @@ function mudarAba(aba){
         abaVerNotas.style.display = "none";
         cardsAlunos.innerText = "";
         mediaTurma.innerText = "";
+        ulAlunos.innerText = "";
     } else {
         buttonCadastrar.style.background = "#7d8187";
         buttonCadastrar.style.borderColor = "#7d8187";
